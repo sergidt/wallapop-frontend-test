@@ -1,1 +1,63 @@
+
+@import '~@angular/material/theming';
+
+$wallapop-palette: (
+  50 : #e3f8f5,
+  100 : #b8ece6,
+  200 : #89e0d6,
+  300 : #5ad4c5,
+  400 : #36cab8,
+  500 : #13c1ac,
+  600 : #11bba5,
+  700 : #0eb39b,
+  800 : #0bab92,
+  900 : #069e82,
+  A100 : #cafff4,
+  A200 : #97ffe9,
+  A400 : #64ffdf,
+  A700 : #4affda,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+@include mat-core();
+
+$wallapop-frontend-test-primary: mat-palette($wallapop-palette);
+$wallapop-frontend-test-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$wallapop-frontend-test-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$wallapop-frontend-test-theme: mat-light-theme((
+  color: (
+    primary: $wallapop-frontend-test-primary,
+    accent: $wallapop-frontend-test-accent,
+    warn: $wallapop-frontend-test-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($wallapop-frontend-test-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

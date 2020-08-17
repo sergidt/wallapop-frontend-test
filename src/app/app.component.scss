@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+// Create a config with the default typography levels.
+$config: mat-typography-config();
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  mat-toolbar {
+    color: white;
+
+    img {
+      height: 38px;
+      margin-right: 20px;
+    }
+
+    .app-bar--title {
+      width: 100%;
+      @include mat-typography-level-to-styles($config, headline);
+    }
+  }
+}

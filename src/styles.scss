@@ -61,3 +61,8 @@ $wallapop-frontend-test-theme: mat-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.highlighted-text {
+  color: white;
+  background-color: #069e82;
+}

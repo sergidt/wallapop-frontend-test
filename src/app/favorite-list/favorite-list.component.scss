@@ -6,6 +6,8 @@
 
   mat-dialog-content {
     background-color: #FAFAFA;
+    width: 704px;
+    height: 600px;
 
     .favorite-list {
       width: 704px;
@@ -23,7 +25,7 @@
     }
 
     .no-favorites {
-      line-height: 465px;
+      line-height: 500px;
       font-size: 48px;
       color: #848484;
       vertical-align: middle;

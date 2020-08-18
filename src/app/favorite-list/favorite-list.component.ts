@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FavoritesService } from '../services/favorites.service';
-import { Item, FILTERING_DATA, FilteringData } from '../definitions';
+import { Item, FILTERING_DATA, FilteringData, SearchResult, SearchResultStatus } from '../definitions';
 import { FilterBaseComponent } from '../filter-base.component';
 import { SearchService } from '../services/search.service';
 
@@ -24,7 +24,8 @@ export function favoriteListFactory(service: FavoritesService): FilteringData {
   ]
 })
 export class FavoriteListComponent extends FilterBaseComponent implements OnInit {
-  filteredFavorites: Array<Item>;
+  searchResult: SearchResult;
+  SearchResultStatus = SearchResultStatus;
 
   constructor(public favoritesService: FavoritesService,
               private searchService: SearchService,
@@ -34,10 +35,10 @@ export class FavoriteListComponent extends FilterBaseComponent implements OnInit
 
   ngOnInit() {
     this.searchService.filterByTerm(this._search$)
-    .subscribe(_ => {
-      this.filteredFavorites = _;
-      this.cd.markForCheck();
-    });
+        .subscribe((_: SearchResult) => {
+          this.searchResult = _;
+          this.cd.markForCheck();
+        });
   }
 
   remove(favorite: Item) {

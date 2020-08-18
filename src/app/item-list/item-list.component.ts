@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ItemService } from '../services/item.service';
-import { Item, FilteringData, FILTERING_DATA } from '../definitions';
+import { Item, FilteringData, FILTERING_DATA, SearchResult, SearchResultStatus } from '../definitions';
 import { Subject, combineLatest } from 'rxjs';
 import { startWith, withLatestFrom, map } from 'rxjs/operators';
 import { MatSort } from '@angular/material/sort';
@@ -38,6 +38,8 @@ export function itemListFactory(service: ItemService): FilteringData {
 export class ItemListComponent extends FilterBaseComponent implements OnInit {
   displayedColumns: string[] = ['image', 'title', 'description', 'price', 'email'];
   dataSource = new MatTableDataSource<Item>();
+  searchResult: SearchResult;
+  SearchResultStatus = SearchResultStatus;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -53,19 +55,29 @@ export class ItemListComponent extends FilterBaseComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    combineLatest([
-      this.searchService.filterByTerm(this._search$),
-      this.favoritesService.favoriteIds$
-    ])
-        .pipe(map(([result, favorites]: [Array<Item>, Array<number>]) => result.map(_ => ({..._, isFavorite: favorites.includes(_.id)}))))
-        .subscribe(_ => {
-          this.dataSource.data = _;
-          this.cd.markForCheck();
-        });
+    this.createSearchSubscription();
   }
 
   toggleFavorite(item: Item) {
     this.favoritesService.toggleFavorite(item);
+  }
+
+  private createSearchSubscription() {
+    combineLatest([
+      this.searchService.filterByTerm(this._search$),
+      this.favoritesService.favoriteIds$
+    ])
+        .pipe(
+            map(([result, favorites]: [SearchResult, Array<number>]) => ({
+              ...result,
+              filteredItems: result.filteredItems.map(_ => ({..._, isFavorite: favorites.includes(_.id)}))
+            } as SearchResult))
+        )
+        .subscribe((_: SearchResult) => {
+          this.searchResult = _;
+          this.dataSource.data = this.searchResult.filteredItems;
+          this.cd.markForCheck();
+        });
   }
 }
 

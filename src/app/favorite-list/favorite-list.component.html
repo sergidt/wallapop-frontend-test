@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Favorites</h2>
+<h2 mat-dialog-title>{{searchResult.totalItemsCount}} Favorites</h2>
 
 <!-- FILTER -->
 <mat-form-field>
@@ -10,8 +10,8 @@
 </mat-form-field>
 
 <mat-dialog-content>
-  <div class="favorite-list">
-    <mat-card *ngFor="let favorite of filteredFavorites">
+  <div class="favorite-list" *ngIf="searchResult.status === SearchResultStatus.Ok; else noResults">
+    <mat-card *ngFor="let favorite of searchResult.filteredItems">
       <mat-card-header>
         <mat-card-title>{{favorite.title}}</mat-card-title>
       </mat-card-header>
@@ -24,11 +24,16 @@
     </mat-card>
   </div>
 
-  <div class="no-favorites" *ngIf="!(favoritesService.favorites$ | async).length">
-    <p>No favorites!</p>
-  </div>
+  <ng-template #noResults>
+    <div class="no-favorites">
+      <p>{{searchResult.status === SearchResultStatus.EmptyDataSource ? 'No favorites!' : 'No results matching this filter!'}}</p>
+    </div>
+  </ng-template>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-stroked-button mat-dialog-close color="primary">Close</button>
+  <button mat-button
+          mat-stroked-button
+          mat-dialog-close
+          color="primary">Close</button>
 </mat-dialog-actions>

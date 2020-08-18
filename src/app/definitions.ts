@@ -20,4 +20,16 @@ export interface FilteringData {
     filterFunction: FilterFunction;
 }
 
+export enum SearchResultStatus {
+    EmptyDataSource,
+    EmptyByFilter,
+    Ok
+}
+
+export interface SearchResult {
+    filteredItems: Array<Item>;
+    totalItemsCount: number;
+    status: SearchResultStatus;
+}
+
 export const FILTERING_DATA: InjectionToken<FilteringData> = new InjectionToken<FilteringData>('FILTERING_DATA');

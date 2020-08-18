@@ -1,0 +1,33 @@
+:host {
+
+  h2 {
+    color: #11bba5;
+  }
+
+  mat-dialog-content {
+    background-color: #FAFAFA;
+
+    .favorite-list {
+      width: 704px;
+      display: flex;
+      flex-wrap: wrap;
+
+      mat-card {
+        width: 300px;
+        margin: 10px;
+
+        mat-card-title {
+          color: #13c1ac;
+        }
+      }
+    }
+
+    .no-favorites {
+      line-height: 465px;
+      font-size: 48px;
+      color: #848484;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+}

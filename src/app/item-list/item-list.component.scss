@@ -4,8 +4,22 @@
   width: 100%;
   height: 100%;
 
-  mat-form-field {
+  .no-results {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+
+    img {
+      width: fit-content;
+    }
+
+    p {
+      margin-top: 50px;
+      font-size: 48px;
+      color: #848484;
+    }
   }
 
   table {
@@ -21,4 +35,8 @@
 .item--price {
   width: 65px;
   padding: 0 15px;
+}
+
+.display-none {
+  display: none;
 }

@@ -7,6 +7,10 @@ export interface Item {
     image: string;
     price: string;
     title: string;
+
+    // transient properties
+    isFavorite?: boolean;
+    id?: number;
 }
 
 export type FilterFunction = (item: Item, term: string) => boolean;

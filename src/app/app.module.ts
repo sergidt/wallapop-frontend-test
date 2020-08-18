@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { ItemListModule } from './item-list/item-list.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatBadgeModule } from '@angular/material/badge';
+import { FavoriteListModule } from './favorite-list/favorite-list.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatButtonModule,
     ItemListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBadgeModule,
+    FavoriteListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

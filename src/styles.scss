@@ -1,5 +1,11 @@
 @import '~@angular/material/theming';
 
+/* FONT FACE */
+@font-face {
+  font-family: Wallie;
+  src: url(assets/fonts/Wallie-Fit.woff2);
+}
+
 $wallapop-palette: (
   50 : #e3f8f5,
   100 : #b8ece6,
@@ -56,10 +62,26 @@ $wallapop-frontend-test-theme: mat-light-theme((
 // that you are using.
 @include angular-material-theme($wallapop-frontend-test-theme);
 
-/* You can add global styles to this file, and also import other style files */
+$custom-typography: mat-typography-config(
+  $font-family: 'Wallie, serif',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Override typography for all Angular Material
+@include mat-toolbar-typography($custom-typography);
+@include mat-base-typography($custom-typography);
+@include angular-material-typography($custom-typography);
+@include mat-core($custom-typography);
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Wallie', 'Helvetica Neue', sans-serif;
+}
 
 .highlighted-text {
   color: white;

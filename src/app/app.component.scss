@@ -20,6 +20,7 @@ $config: mat-typography-config();
     .app-bar--title {
       width: 100%;
       @include mat-typography-level-to-styles($config, headline);
+      font-family: 'Wallie';
     }
   }
 }

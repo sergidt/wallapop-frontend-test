@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
-import { Item, FILTERING_DATA, FilteringData, SearchResult, SearchResultStatus } from '../definitions';
-import { startWith, map, distinctUntilChanged } from 'rxjs/operators';
+import { Item, FILTERING_DATA, FilteringData, SearchResult, SearchResultStatus, LOADING_RESULT } from '../definitions';
+import { startWith, map, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 
 @Injectable()
 export class SearchService {
@@ -26,7 +26,9 @@ export class SearchService {
                         : SearchResultStatus.Ok
               } as SearchResult;
             }),
-            distinctUntilChanged()
+            distinctUntilChanged(),
+            shareReplay({refCount: true}),
+            startWith(LOADING_RESULT)
         );
   }
 }

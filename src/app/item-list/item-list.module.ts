@@ -23,7 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     SharedModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [
       ItemListComponent

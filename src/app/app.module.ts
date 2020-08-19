@@ -9,6 +9,8 @@ import { ItemListModule } from './item-list/item-list.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatBadgeModule } from '@angular/material/badge';
 import { FavoriteListModule } from './favorite-list/favorite-list.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FavoriteListModule } from './favorite-list/favorite-list.module';
     ItemListModule,
     HttpClientModule,
     MatBadgeModule,
-    FavoriteListModule
+    MatIconModule,
+    FavoriteListModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   bootstrap: [AppComponent]
 })

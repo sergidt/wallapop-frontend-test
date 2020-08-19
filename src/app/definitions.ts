@@ -23,7 +23,8 @@ export interface FilteringData {
 export enum SearchResultStatus {
     EmptyDataSource,
     EmptyByFilter,
-    Ok
+    Ok,
+    Loading
 }
 
 export interface SearchResult {
@@ -31,5 +32,11 @@ export interface SearchResult {
     totalItemsCount: number;
     status: SearchResultStatus;
 }
+
+export const LOADING_RESULT: SearchResult = {
+    status: SearchResultStatus.Loading,
+    filteredItems: [],
+    totalItemsCount: 0
+};
 
 export const FILTERING_DATA: InjectionToken<FilteringData> = new InjectionToken<FilteringData>('FILTERING_DATA');

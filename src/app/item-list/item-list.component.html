@@ -6,7 +6,7 @@
   </button>
 </mat-form-field>
 
-<table mat-table matSort [dataSource]="dataSource" *ngIf="searchResult?.status === SearchResultStatus.Ok; else noResults">
+<table mat-table matSort [dataSource]="dataSource" *ngIf="searchResult?.status === SearchResultStatus.Ok">
 
   <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Favorite </th>
@@ -44,9 +44,7 @@
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
                [ngClass]="{'display-none': !dataSource.data.length}"></mat-paginator>
 
-<ng-template #noResults>
-  <div class="no-results">
+  <div class="no-results" *ngIf="searchResult?.status === SearchResultStatus.EmptyByFilter">
     <img src="assets/not-found.png" loading="lazy"/>
     <p>No results were found!</p>
   </div>
-</ng-template>

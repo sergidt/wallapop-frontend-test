@@ -6,7 +6,7 @@
   </button>
 </mat-form-field>
 
-<table mat-table matSort [dataSource]="dataSource" *ngIf="searchResult.status === SearchResultStatus.Ok; else noResults">
+<table mat-table matSort [dataSource]="dataSource" *ngIf="searchResult?.status === SearchResultStatus.Ok; else noResults">
 
   <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Favorite </th>

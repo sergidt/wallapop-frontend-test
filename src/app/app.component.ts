@@ -17,17 +17,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.favoriteService.favorites$
-    .subscribe(_ => {
-      this.favoritesCount = _.length ?? 0;
-      this.cd.markForCheck();
-    });
+        .subscribe(_ => {
+          this.favoritesCount = _.length ?? 0;
+          this.cd.markForCheck();
+        });
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(FavoriteListComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(FavoriteListComponent);
   }
 }

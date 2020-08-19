@@ -3,6 +3,8 @@ import { FavoritesService } from '../services/favorites.service';
 import { Item, FILTERING_DATA, FilteringData, SearchResult, SearchResultStatus } from '../definitions';
 import { FilterBaseComponent } from '../filter-base.component';
 import { SearchService } from '../services/search.service';
+import { DestroyService } from '../services/destroy.service';
+import { takeUntil } from 'rxjs/operators';
 
 export function favoriteListFactory(service: FavoritesService): FilteringData {
   return {
@@ -20,7 +22,8 @@ export function favoriteListFactory(service: FavoritesService): FilteringData {
     SearchService,
     {
       provide: FILTERING_DATA, useFactory: favoriteListFactory, deps: [FavoritesService]
-    }
+    },
+    DestroyService
   ]
 })
 export class FavoriteListComponent extends FilterBaseComponent implements OnInit {
@@ -29,12 +32,14 @@ export class FavoriteListComponent extends FilterBaseComponent implements OnInit
 
   constructor(public favoritesService: FavoritesService,
               private searchService: SearchService,
+              private destroy$: DestroyService,
               private cd: ChangeDetectorRef) {
     super();
   }
 
   ngOnInit() {
     this.searchService.filterByTerm(this._search$)
+        .pipe(takeUntil(this.destroy$))
         .subscribe((_: SearchResult) => {
           this.searchResult = _;
           this.cd.markForCheck();

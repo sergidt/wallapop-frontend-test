@@ -3,8 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ItemService } from '../services/item.service';
 import { Item, FilteringData, FILTERING_DATA, SearchResult, SearchResultStatus } from '../definitions';
-import { Subject, combineLatest } from 'rxjs';
-import { startWith, withLatestFrom, map } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { MatSort } from '@angular/material/sort';
 import { SearchService } from '../services/search.service';
 import { FavoritesService } from '../services/favorites.service';
@@ -21,7 +21,6 @@ export function itemListFactory(service: ItemService): FilteringData {
     filterFunction: anyItemPropertyContains
   };
 }
-
 
 @Component({
   selector: 'app-item-list',

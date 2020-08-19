@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Item } from '../definitions';
-import { shareReplay, map, tap } from 'rxjs/operators';
+import { shareReplay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

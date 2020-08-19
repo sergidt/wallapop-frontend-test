@@ -6,7 +6,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SharedModule } from '../shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -21,7 +20,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatSortModule,
     MatInputModule,
     MatFormFieldModule,
-    SharedModule,
     MatIconModule,
     MatButtonModule,
   ],

@@ -19,22 +19,22 @@
 
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef mat-sort-header class="item--title"> Title </th>
-    <td mat-cell *matCellDef="let element" class="item--title" [innerHTML]="element.title | highlight: input.value"></td>
+    <td mat-cell *matCellDef="let element" class="item--title"> {{ element.title }}</td>
   </ng-container>
 
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-    <td mat-cell *matCellDef="let element" [innerHTML]="element.description | highlight: input.value"></td>
+    <td mat-cell *matCellDef="let element"> {{element.description }}</td>
   </ng-container>
 
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-    <td mat-cell *matCellDef="let element" [innerHTML]="element.email | highlight: input.value"></td>
+    <td mat-cell *matCellDef="let element">{{element.email}}</td>
   </ng-container>
 
   <ng-container matColumnDef="price">
     <th mat-header-cell *matHeaderCellDef mat-sort-header class="item--price"> Price </th>
-    <td mat-cell *matCellDef="let element" class="item--price" [innerHTML]="element.price | highlight: input.value"></td>
+    <td mat-cell *matCellDef="let element" class="item--price"> {{element.price}}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -11,7 +11,7 @@ import { FavoritesService } from '../services/favorites.service';
 import { FilterBaseComponent } from '../filter-base.component';
 
 export const anyItemPropertyContains = ({ title, description, email, price }: Item, searchTerm: string): boolean =>
-    (title + description + email + price).toLocaleLowerCase().includes(searchTerm.toLowerCase());
+    [title, description, email, price].some(_ => _.toLocaleLowerCase().includes(searchTerm.toLowerCase()));
 
 export const addId = (items: Array<Item>): Array<Item> => items.map((_: Item, index: number) => ({..._, id: index + 1}));
 

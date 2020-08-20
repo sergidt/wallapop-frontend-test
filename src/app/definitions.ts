@@ -21,10 +21,10 @@ export interface FilteringData {
 }
 
 export enum SearchResultStatus {
-    EmptyDataSource,
-    EmptyByFilter,
-    Ok,
-    Loading
+    EmptyDataSource = 'EmptyDataSource',
+    EmptyByFilter = 'EmptyByFilter',
+    Ok = 'Ok',
+    Loading = 'Loading'
 }
 
 export interface SearchResult {

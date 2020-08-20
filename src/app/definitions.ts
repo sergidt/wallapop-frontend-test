@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 export interface Item {
     description: string;
@@ -40,3 +40,15 @@ export const LOADING_RESULT: SearchResult = {
 };
 
 export const FILTERING_DATA: InjectionToken<FilteringData> = new InjectionToken<FilteringData>('FILTERING_DATA');
+
+export const EMPTY_ITEM: Item = {
+    title: 'title',
+    description: 'description',
+    price: '10',
+    email: 'email@email.com',
+    image: '',
+    id: 1
+};
+
+
+

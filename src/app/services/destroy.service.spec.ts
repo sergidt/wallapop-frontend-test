@@ -7,10 +7,17 @@ describe('DestroyService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DestroyService);
+    service = new DestroyService();
   });
 
-  it('should be created', () => {
+  test('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  test('should emit when destroyed', () => {
+    service.life$
+           .subscribe(_ => expect(_).toBeCalled());
+
+    service.ngOnDestroy();
   });
 });

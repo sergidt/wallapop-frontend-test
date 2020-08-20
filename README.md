@@ -35,3 +35,5 @@ manifest
 loading = lazy
 tiny png
 lighthouse result
+jest
+cypress

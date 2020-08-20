@@ -2,22 +2,23 @@ import { TestBed } from '@angular/core/testing';
 
 import { ItemService } from './item.service';
 import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ItemService', () => {
   let service: ItemService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClient] });
-    service = TestBed.inject(ItemService);
+  beforeEach(async () => {
+    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
+    const http = TestBed.inject(HttpClient);
+    service = new ItemService(http);
   });
 
-  it('should be created', () => {
+  test('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Should return an array on items', () => {
-    service.getItems()
-           .subscribe(_ => expect(_.length).toEqual(20));
+  test('Should return an array fo 20 items', () => {
+    service.getItems().subscribe(_ => expect(_).toHaveLength(20));
   });
 
 });

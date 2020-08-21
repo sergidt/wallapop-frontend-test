@@ -7,7 +7,7 @@
 </mat-form-field>
 
 <table mat-table matSort [dataSource]="dataSource"
-       *ngIf="searchResult?.status === SearchResultStatus.Ok">
+       [ngClass]="{'display-none': searchResult?.status !== SearchResultStatus.Ok}">
 
   <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef> </th>

@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Instructions
 
-If you don't want to install and execute this application you have a deployed version over here.
+If you don't want to install and execute this application you have a deployed version over [here](https://wallapop-frontend-test.web.app/)
 
 ### install dependencies
 
@@ -94,11 +94,9 @@ To make a reusable search service, we provide via DI all necessary info to it, u
 
 Any of our components have its own SearchService instance, then we can define a custom FilteringData for each scenario. 
 
-### PWA
+### Performant Application and PWA
 
-I have applied some changes in order to get a PWA:
-* manifest
-* some images are lazy loaded
-* A service worker has been defined
+I have applied some changes in order to get a Performant application and PWA.
 
-You can open chrome dev tools and execute Lighthouse in order to check the application state.
+You can check results using Chrome lighthouse tool: 
+![Lighthouse result](src/assets/lighthouse.PNG)
